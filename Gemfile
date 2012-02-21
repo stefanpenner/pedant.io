@@ -1,5 +1,10 @@
 source :gemcutter
 
-gem 'rack'
-gem 'rack-rewrite'
-gem 'rack-contrib'
+gem 'sinatra'
+gem 'racksh'
+
+group :development do
+  gem 'pry'
+  gem 'rspec'
+  gem 'rack-test'
+end
