@@ -2,6 +2,7 @@ source :gemcutter
 
 gem 'sinatra'
 gem 'racksh'
+gem 'ruby-git'
 
 group :development do
   gem 'pry'

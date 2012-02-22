@@ -6,6 +6,10 @@ describe 'App' do
 
   let(:app) { Pedant::Server }
 
+  before do
+    Git.mock_remote = 'spec/support/test_repo'
+  end
+
   context 'get /' do
     subject { get '/' }
 

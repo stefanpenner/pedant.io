@@ -1,9 +1,14 @@
 require './lib/pedant'
+require 'ruby-git'
 
 describe 'Pedant::Repository' do
   context 'valid repository' do
     subject do
       Pedant::Repository.new('stefanpenner/pedant.io')
+    end
+
+    before do
+      Git.mock_remote = File.dirname(__FILE__) + '/../..//support/test_repo'
     end
 
     let(:path) { [FileUtils.pwd,'tmp', 'stefanpenner', 'pedant.io'].join('/') }
@@ -22,7 +27,7 @@ describe 'Pedant::Repository' do
     end
 
     describe '#rm_rf!' do
-      it 'clones' do
+      it 'cleans' do
         subject.clone!
         Dir[path + '/*'].should_not be_empty
         subject.rm_rf!

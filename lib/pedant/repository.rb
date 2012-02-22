@@ -1,3 +1,4 @@
+require 'ruby-git'
 module Pedant
   class Repository
     attr_reader :url, :cloned, :account, :repo
@@ -15,18 +16,21 @@ module Pedant
 
     def clone!
       rm_rf!
+
       cd 'tmp' do
         mkdir_p account
+
         cd account do
-          system "git clone https://github.com/#{@url}.git > /dev/null 2> /dev/null"
+          Git.new(@repo).klone("https://github.com/#{@url}.git")
         end
+
         @cloned = true
       end
     end
 
     def rm_rf!
       cd 'tmp' do
-        rm_rf @url
+        rm_rf @account
       end
     end
   end
