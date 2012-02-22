@@ -16,8 +16,8 @@ describe 'App' do
     its(:status) { should == 302 }
   end
 
-  context 'post /api/v1/repository' do
-    subject { post '/api/v1/repository', url: 'stefanpenner/pedant' }
+  context 'post /api/v1/project' do
+    subject { post '/api/v1/project', url: 'stefanpenner/pedant' }
 
     its(:status) { should == 200 }
     its(:body)   { should =~ /done/ }

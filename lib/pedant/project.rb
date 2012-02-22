@@ -1,6 +1,6 @@
 require 'ruby-git'
 module Pedant
-  class Repository
+  class Project
     attr_reader :url, :cloned, :account, :repo
     include FileUtils
 
@@ -8,6 +8,10 @@ module Pedant
       @url = url
       @cloned = false
       @account, @repo = @url.split('/')
+    end
+
+    def self.find_or_create(url)
+      new(url)
     end
 
     def path

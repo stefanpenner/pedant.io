@@ -10,8 +10,8 @@ module Pedant
       redirect '/index.html'
     end
 
-    post '/api/v1/repository' do
-      if repo = Repository.new(params[:url])
+    post '/api/v1/project' do
+      if repo = Project.find_or_create(params[:url])
         repo.clone!
       end
       "done"

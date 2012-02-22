@@ -1,10 +1,10 @@
 require './lib/pedant'
 require 'ruby-git'
 
-describe 'Pedant::Repository' do
-  context 'valid repository' do
+describe 'Pedant::Project' do
+  context 'valid Project' do
     subject do
-      Pedant::Repository.new('stefanpenner/pedant.io')
+      Pedant::Project.new('stefanpenner/pedant.io')
     end
 
     before do
