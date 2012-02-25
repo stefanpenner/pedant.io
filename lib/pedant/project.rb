@@ -20,12 +20,12 @@ module Pedant
 
     def clone!
       rm_rf!
-
       cd 'tmp' do
         mkdir_p account
 
         cd account do
           Git.new(@repo).klone("https://github.com/#{@url}.git")
+          require'pry';binding.pry
         end
 
         @cloned = true
