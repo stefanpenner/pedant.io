@@ -15,21 +15,14 @@ module Pedant
     end
 
     def path
-      [pwd,'tmp', @url].join('/')
+      [pwd,'tmp', url].join('/')
     end
 
     def clone!
       rm_rf!
-      cd 'tmp' do
-        mkdir_p account
+      Git.repo(path).klone("https://github.com/#{url}.git")
 
-        cd account do
-          Git.new(@repo).klone("https://github.com/#{@url}.git")
-          require'pry';binding.pry
-        end
-
-        @cloned = true
-      end
+      @cloned = true
     end
 
     def rm_rf!
